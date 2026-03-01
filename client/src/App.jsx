@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
+<<<<<<< HEAD
 import Auth from './pages/auth'
+=======
+import Auth from './pages/Auth'
+import { useEffect } from 'react'
+>>>>>>> 927f54c42873f35bc719a973bcae8fbc6ed4553c
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { setUserData } from './redux/userSlice'
@@ -11,7 +16,7 @@ import Pricing from './pages/Pricing'
 import InterviewReport from './pages/InterviewReport'
 import About from './pages/About'
 
-export const ServerUrl  = "http://localhost:8000"
+export const ServerUrl  = "https://careersathi-bac.onrender.com"
 
 function App() {
 
