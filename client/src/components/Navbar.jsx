@@ -50,8 +50,8 @@ function Navbar() {
                 <h1 className='font-semibold hidden md:block text-lg'>CareerSaathi</h1>
             </div>
 
-            {/* About Link Added */}
-            <div className='hidden md:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2'>
+            {/* About Link (Updated) */}
+            <div className='flex items-center gap-6'>
                 <button 
                 onClick={()=>navigate("/about")}
                 className='text-gray-600 hover:text-black transition text-sm font-medium'>
