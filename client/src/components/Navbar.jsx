@@ -10,6 +10,7 @@ import axios from 'axios';
 import { ServerUrl } from '../App';
 import { setUserData } from '../redux/userSlice';
 import AuthModel from './AuthModel';
+
 function Navbar() {
     const {userData} = useSelector((state)=>state.user)
     const [showCreditPopup,setShowCreditPopup] = useState(false)
@@ -30,6 +31,7 @@ function Navbar() {
             console.log(error)
         }
     }
+
   return (
     <div className='bg-[#f3f3f3] flex justify-center px-4 pt-6'>
         <motion.div 
@@ -37,15 +39,27 @@ function Navbar() {
         animate={{opacity:1 , y:0}}
         transition={{duration: 0.3}}
         className='w-full max-w-6xl bg-white rounded-[24px] shadow-sm border border-gray-200 px-8 py-4 flex justify-between items-center relative'>
-            <div className='flex items-center gap-3 cursor-pointer'>
+            
+            {/* Logo Section */}
+            <div 
+            onClick={()=>navigate("/")}
+            className='flex items-center gap-3 cursor-pointer'>
                 <div className='bg-black text-white p-2 rounded-lg'>
                     <BsRobot size={18}/>
-
                 </div>
                 <h1 className='font-semibold hidden md:block text-lg'>CareerSaathi</h1>
             </div>
 
-            <div className='flex items-center gap-6  relative'>
+            {/* About Link Added */}
+            <div className='hidden md:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2'>
+                <button 
+                onClick={()=>navigate("/about")}
+                className='text-gray-600 hover:text-black transition text-sm font-medium'>
+                    About
+                </button>
+            </div>
+
+            <div className='flex items-center gap-6 relative'>
                 <div className='relative'>
                     <button onClick={()=>{
                         if(!userData){
@@ -63,7 +77,6 @@ function Navbar() {
                         <div className='absolute right-[-50px] mt-3 w-64 bg-white shadow-xl border border-gray-200 rounded-xl p-5 z-50'>
                             <p className='text-sm text-gray-600 mb-4'>Need more credits to continue interviews?</p>
                             <button onClick={()=>navigate("/pricing")} className='w-full bg-black text-white py-2 rounded-lg text-sm'>Buy more credits</button>
-
                         </div>
                     )}
                 </div>
@@ -79,7 +92,6 @@ function Navbar() {
                         setShowCreditPopup(false)
                     }} className='w-9 h-9 bg-black text-white rounded-full flex items-center justify-center font-semibold'>
                         {userData ? userData?.name.slice(0,1).toUpperCase() : <FaUserAstronaut size={16}/>}
-                        
                     </button>
 
                     {showUserPopup && (
@@ -90,14 +102,13 @@ function Navbar() {
                             <button onClick={handleLogout} 
                             className='w-full text-left text-sm py-2 flex items-center gap-2 text-red-500'>
                                 <HiOutlineLogout size={16}/>
-                                Logout</button>
+                                Logout
+                            </button>
                         </div>
                     )}
                 </div>
 
             </div>
-
-
 
         </motion.div>
 
